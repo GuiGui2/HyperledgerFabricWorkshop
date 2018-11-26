@@ -1,1 +1,1 @@
-# HyperledgerFabricWorkshop
+# Hyperledger Fabric Workshop
