@@ -192,11 +192,11 @@ The fabric is now up, running and configured.
 
 **Step 6:** Create a directory of your choice in the ${GOPATH}/src folder, like so:
 
-    blockchain@blkchn32:~$ mkdir ${GOPATH}/src/chaincode
+    blockchain@blkchn32:~$ mkdir ${GOPATH}/src/chaincode/go
 
 **Step 7:** Move into that directory:
 
-    blockchain@blkchn32:~$ cd ${GOPATH}/src/chaincode
+    blockchain@blkchn32:~$ cd ${GOPATH}/src/chaincode/go
 
 **Step 8:** We'll proceed in 4 steps with our chaincode. So we suggest to use 4 different subdirectories for each of the steps of the labs.
 
@@ -285,7 +285,7 @@ func main() {
 
 **Step 3:** Also make sure the resulting binary can be launched:
 
-    blockchain@blkchn32:~/gopath/src/chaincode/step1$ ./step1 
+    blockchain@blkchn32:~/gopath/src/chaincode/go/step1$ ./step1 
     2017-10-20 15:01:31.189 CEST [shim] SetupChaincodeLogging -> INFO 001 Chaincode log level not provided; defaulting to: INFO
     2017-10-20 15:01:31.189 CEST [shim] SetupChaincodeLogging -> INFO 002 Chaincode (build level: ) starting up ...
     Error starting SimpleChaincode chaincode: Error chaincode id not providedblockchain@blkchn32:~/gopath/src/chaincode/step1$ 
@@ -293,7 +293,7 @@ func main() {
 **Step 4:** The chaincode compiles and runs, but does nothing outside of the Fabric. This is what the error message suggests. 
 The next step is to instantiate it in the Fabric. In order to do that, we'll use the CLI container which has been started as part of the Fabric. Let's connect to the CLI container:
 
-    blockchain@blkchn32:~/gopath/src/chaincode/step1$ docker exec -it cli /bin/bash
+    blockchain@blkchn32:~/gopath/src/chaincode/go/step1$ docker exec -it cli /bin/bash
     root@@2b839fc94578:/opt/gopath/src/github.com/hyperledger/fabric/peer# 
 
 **Step 5:** Now is time to install the chaincode onto the peer.
@@ -354,7 +354,7 @@ Section 4: Chaincode development - step 2
 
 **Step 1:** Copy the template for step1 over to step2, as step2.go
 
-    blockchain@blkchn30:~/gopath/src/chaincode/step2$ cp ../step1/step1.go step2.go
+    blockchain@blkchn30:~/gopath/src/chaincode/go/step2$ cp ../step1/step1.go step2.go
 
 **Step 2:** Let's modify our previous, functional yet useless, chaincode to store a vkey and its value in the ledger as part of the chaincode initialization process.
 Suggested if to use the PutState method to store a key of your choice, together with its value. These attributes will be passed to the Init function using the -c argument on the *peer chaincode instantiate* command. Make sure to add some logs and outputs.
@@ -363,7 +363,7 @@ Suggested if to use the PutState method to store a key of your choice, together 
 
 **Step 3:** Install, instantiate and check to effect of the Init. The steps to follow are similar to steps 5 and 6 in the previous section. Using the instructor-provided example show the following output when instantiated:
 
-    root@2b839fc94578:/opt/gopath/src/github.com/hyperledger/fabric/peer# peer chaincode install -n step2 -v1.0 -p chaincode/step2
+    root@2b839fc94578:/opt/gopath/src/github.com/hyperledger/fabric/peer# peer chaincode install -n step2 -v1.0 -p chaincode/go/step2
     2017-10-23 11:32:12.085 UTC [msp] GetLocalMSP -> DEBU 001 Returning existing local MSP
     2017-10-23 11:32:12.085 UTC [msp] GetDefaultSigningIdentity -> DEBU 002 Obtaining default signing identity
     2017-10-23 11:32:12.085 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 003 Using default escc
@@ -391,9 +391,9 @@ Suggested if to use the PutState method to store a key of your choice, together 
 
 **Step4:** Check the chaincode container logs to figure out what happened:
 
-    blockchain@blkchn30:~/gopath/src/chaincode/step2$ docker ps | grep step2
+    blockchain@blkchn30:~/gopath/src/chaincode/go/step2$ docker ps | grep step2
     79f6458d4414        dev-peer0-step2-1.0-e1816cadb82738bfe84fef246feaac1ced6553b3ee106a7f4dc03f498fe9a6bb   "chaincode -peer.a..."   About a minute ago   Up About a minute                                                     dev-peer0-step2-1.0
-    blockchain@blkchn30:~/gopath/src/chaincode/step2$ docker logs 79f6458d4414
+    blockchain@blkchn30:~/gopath/src/chaincode/go/step2$ docker logs 79f6458d4414
     Initializing chaincode SimpleChaincode
     blockchain@blkchn30:~/gopath/src/chaincode/step2$ 
 
@@ -415,7 +415,7 @@ Section 5: Chaincode development - step 3
 **Step 3:** Install, instantiate and test the function works as expected.
 Using the example provided, the output is as follows:
 
-    root@2b839fc94578:/opt/gopath/src/github.com/hyperledger/fabric/peer# peer chaincode query -n step3 -C labchannel -c '{"Args":["query","Hello"]}'
+    root@2b839fc94578:/opt/gopath/src/github.com/hyperledger/fabric/peer# peer chaincode query -n step3 -C mpl -c '{"Args":["query","Hello"]}'
     2017-10-24 08:09:11.764 UTC [msp] GetLocalMSP -> DEBU 001 Returning existing local MSP
     2017-10-24 08:09:11.764 UTC [msp] GetDefaultSigningIdentity -> DEBU 002 Obtaining default signing identity
     2017-10-24 08:09:11.764 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 003 Using default escc
@@ -428,7 +428,7 @@ Using the example provided, the output is as follows:
 
 **Step4:** Also check the output of the chaincode container, if you add any debug statements in there. Using the example provided, it looks as follows:
 
-    blockchain@blkchn30:~/gopath/src/chaincode/step3$ docker logs cc8a660db67e
+    blockchain@blkchn30:~/gopath/src/chaincode/go/step3$ docker logs cc8a660db67e
     Initializing chaincode SimpleChaincode
     Invoking chaincode SimpleChaincode
     Query Response:{"Name":"Hello","Amount":"World!"}
