@@ -105,7 +105,7 @@ In this section of the lab, you will use PuTTy to connect to your LinuxONE guest
 5. To be ready to build your first blockchain application, you'll need to get everything running. This has been scripted for you. Copy the script to your guest using the following command.
 
    ```
-   wget https://raw.githubusercontent.com/GuiGui2/HyperledgerFabricWorkshop/master/labs/composer/ComposerLabSetup.sh
+   wget https://raw.githubusercontent.com/GuiGui2/HyperledgerFabricWorkshop/master/labs/Composer/ComposerLabSetup.sh
    ```
 
 6. Make the script executable. Check to make sure the script is there and excutable.
