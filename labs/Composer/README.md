@@ -1,4 +1,4 @@
-# Hyplerledger Composer Lab
+# Hyperledger Composer Lab
 
 The blockchain workshop is intended to give you a basic understanding of how a developer would interact with Hyperledger Fabric. In this workshop you will use a Browser based UI to modify chaincode, test your code and deploy your changes. You will also learn how tooling can take the code and generate API to allow for application integration through a REST-ful interface.
 
