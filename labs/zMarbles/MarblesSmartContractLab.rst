@@ -117,7 +117,7 @@ The *scripts* directory contains a script named *setpeer* that you will be using
 
 Congratulations!  You are now ready to get to the hard part of the lab!  Proceed to the next section please.  
  
-Section 4	- Bring up the twel ve Docker containers that comprise the Hyperledger Fabric network
+Section 4	- Bring up the twelve Docker containers that comprise the Hyperledger Fabric network
 ==============================================================================================
 
 **Step 4.1:**	Change to the *zmarbles* directory with the *cd* command::
@@ -403,7 +403,7 @@ If, however, all twelve of your Docker containers are in *Up* status, as in the 
 
 Section 5	- Create a channel in the Hyperledger Fabric network
 ==============================================================
-In a Hyperledger Fabric v1.3 network, multiple channels can be created.  
+In a Hyperledger Fabric v1.3+ network, multiple channels can be created.  
 Each channel can have its own policies for things such as requirements for endorsement and what organizations may join the channel.  
 This allows for a subset of network participants to participate in their own channel.  
 
@@ -481,7 +481,11 @@ Enter this command now to see the value of this environment variable, and thank 
  root@acd1f96d8807:/opt/gopath/src/github.com/hyperledger/fabric/peer# echo $FABRIC_TLS 
  --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/blockchain.com/orderers/orderer.blockchain.com/msp/cacerts/ca.blockchain.com-cert.pem
 
-**Step 5.5:** Now enter this command::
+**Step 5.5** Set the CHANNEL_NAME environment variable to match the channel name used when generating the artifacts. Unless you've changed it explicitely, it will be *mychannel*::
+
+ export CHANNEL_NAME=mychannel
+
+**Step 5.6:** Now enter this command::
 
  root@acd1f96d8807:/opt/gopath/src/github.com/hyperledger/fabric/peer# peer channel create -o orderer.blockchain.com:7050  -f channel-artifacts/channel.tx  $FABRIC_TLS -c $CHANNEL_NAME
  2018-10-22 18:54:06.576 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
@@ -492,7 +496,7 @@ This indicates that your channel creation was successful, and the peer received 
 
 Proceed to the next section where you will join each peer to the channel.
  
-Section 6	- Instruct each peer node to join the channel
+Section 6	- Instruct each peer node to join the channel 
 =======================================================
 
 In the last section, you issued the *peer channel create* command from one of the peers.   
@@ -655,7 +659,7 @@ Your output should look similar to this::
  2018-10-22 19:03:03.188 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
  Channels peers has joined: 
  mychannel
- 
+  
 Section 7	- Define an “anchor” peer for each organization in the channel
 =======================================================================
 
@@ -710,7 +714,7 @@ Think of *peer channel create* here as meaning, “create an update transaction 
  root@acd1f96d8807:/opt/gopath/src/github.com/hyperledger/fabric/peer# peer channel create -o orderer.blockchain.com:7050 -f channel-artifacts/Org1MSPanchors.tx $FABRIC_TLS -c $CHANNEL_NAME
  2018-10-22 19:06:44.083 UTC [channelCmd] InitCmdFactory -> INFO 001 Endorser and orderer connections initialized
  2018-10-22 19:06:44.095 UTC [cli.common] readBlock -> INFO 002 Received block: 0
-
+ 
 Section 8	- Install the chaincode on the peer nodes
 ===================================================
 
@@ -771,7 +775,7 @@ That is, even if you wanted to invoke the same chaincode on multiple channels on
 Installing chaincode on a peer is a necessary step, but not the only step needed, in order to execute chaincode on that peer.  
 The chaincode must also be instantiated on a channel that the peer participates in.  
 You will do that in the next section.
- 
+  
 Section 9	- Instantiate the chaincode on the channel
 ====================================================
 
@@ -896,7 +900,7 @@ In our case of *dev-peer0.unitedmarbles.com-marbles-1.0-*, the default name of a
 
 Note that a chaincode Docker container was only created for the peer on which you entered the *peer chaincode instantiate* command.  
 Docker containers will not be created on the other peers until you run a *peer chaincode invoke* or *peer chaincode query* command on that peer.
- 
+  
 Section 10 - Invoke chaincode functions
 =======================================
 
