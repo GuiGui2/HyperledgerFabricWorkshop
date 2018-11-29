@@ -1,13 +1,13 @@
 {
    "channelID":"mpl",
    "chaincodeID":"step4",
-   "keyPEM":"../../../../fabric-configs/v1.1.x/cas/mspconfig/Org1/msp/keystore/4ebcda687c6ddf84b4a3e9617b93418105fc19fa5655b8df7a923755e170dbc3_sk",
-   "certPEM":"../../../../fabric-configs/v1.1.x/cas/mspconfig/Org1/msp/admincerts/adminOrg1.pem",
+   "keyPEM":"../../../config/v1.1.x/cas/mspconfig/Org1/msp/keystore/4ebcda687c6ddf84b4a3e9617b93418105fc19fa5655b8df7a923755e170dbc3_sk",
+   "certPEM":"../../../config/v1.1.x/cas/mspconfig/Org1/msp/admincerts/adminOrg1.pem",
    "keyValueStore":"/tmp/fabric-client-kvs",
    "mspid":"Org1MSP",
-   "msppath":"../../../../fabric-configs/v1.1.x/cas/mspconfig/Org1/msp",
+   "msppath":"../../../config/v1.1.x/cas/mspconfig/Org1/msp",
    "caserver":{
-      "ca_url":"http://127.0.0.1:7054"
+      "ca_url":"http://10.3.4.187:7054"
    },
    "orderer":{
       "orderer_url":"grpc://127.0.0.1:7050"
