@@ -48,17 +48,22 @@ This directory is also usually set in the $HOME environment variable, so *cd $HO
 
 **Step 3.2:** Retrieve the zmarbles compressed tarball prepared for this lab with the following command::
 
- blockchain@blkchn23:~$ wget https://raw.githubusercontent.com/GuiGui2//HyperledgerFabricWorkshop/master/zMarbles.tar.gz
- --2018-10-22 14:02:04--  https://raw.githubusercontent.com/GuiGui2/HyperledgerFabricWorkshop/master/zMarbles.tar.gz
- Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.32.133
- Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.32.133|:443... connected.
+ blockchain@blkchn23:~$ wget https://github.com/GuiGui2/HyperledgerFabricWorkshop/raw/master/labs/zMarbles/zMarbles.tar.gz
+ --2018-12-03 21:43:54--  https://github.com/GuiGui2/HyperledgerFabricWorkshop/raw/master/labs/zMarbles/zMarbles.tar.gz
+ Resolving github.com (github.com)... 192.30.253.113, 192.30.253.112
+ Connecting to github.com (github.com)|192.30.253.113|:443... connected.
+ HTTP request sent, awaiting response... 302 Found
+ Location: https://raw.githubusercontent.com/GuiGui2/HyperledgerFabricWorkshop/master/labs/zMarbles/zMarbles.tar.gz [following]
+ --2018-12-03 21:43:55--  https://raw.githubusercontent.com/GuiGui2/HyperledgerFabricWorkshop/master/labs/zMarbles/zMarbles.tar.gz
+ Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.120.133
+ Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.120.133|:443... connected.
  HTTP request sent, awaiting response... 200 OK
- Length: 13320911 (13M) [application/octet-stream]
+ Length: 12986566 (12M) [application/octet-stream]
  Saving to: 'zMarbles.tar.gz'
 
- zMarbles.tar.gz                 100%[=======================================================>]  12.70M  23.0MB/s    in 0.6s    
+ zMarbles.tar.gz                    100%[================================================================>]  12.38M  16.3MB/s    in 0.8s    
 
- 2018-10-22 14:02:05 (23.0 MB/s) - 'zMarbles.tar.gz' saved [13320911/13320911]
+ 2018-12-03 21:43:57 (16.3 MB/s) - 'zMarbles.tar.gz' saved [12986566/12986566]
 
 **Step 3.3:**	List the *zmarbles* directory with this *ls* command::
 
